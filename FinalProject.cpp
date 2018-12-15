@@ -6,10 +6,54 @@
 
 int main()
 {
+	string input, par, id, event;
 	vector<struct node> tree;
-	rootNode(tree, "this is a test");
+	while (input != "quit")
+	{
+		cout << endl << "Tracking Tree" << endl << "----------------------------------" << endl;
+		cout << "Instructions: \nnew	(create node) \ndisplay	(preorder traversal)";
+		cout << " \nsearch	(finds/prints node data) \nupdate	(update contents of specific node)";
+		cout << " \nquit	(closes application) " << endl;
+		cout << "----------------------------------" << endl;
 
-	cout << tree[0].ID << endl;
-	system("pause");
+
+		cout << "Input:  ";
+		cin >> input;
+		if (input == "new")
+		{
+			cout << "Enter your raw event: ";
+			cin >> event;
+			insert(tree, event);
+			//cout << endl << "Node successfully added" << endl;
+
+		}
+		if (input == "display")
+		{
+			PreTrav(tree, 0);
+			cout << endl;
+		}
+		if (input == "search")
+		{
+			cout << "Enter search ID: ";
+			cin >> id;
+			display(tree, id);
+
+		}
+		if (input == "update")
+		{
+			cout << "Enter update ID:  ";
+			cin >> id;
+			cout << endl << "Enter new event: ";
+			cin >> event;
+			update(tree, id, event);
+			//cout << endl << "Record Updated" << endl;
+
+		}
+		else
+		{
+			//cout << endl << "Invalid command" << endl;
+		}
+	}
 	return 0;
+
 }
